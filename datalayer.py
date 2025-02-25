@@ -1,7 +1,6 @@
 import sqlite3
 
 sql_script = """
-
 """
 
 class SqliteDatamanager:
@@ -48,6 +47,10 @@ class SqliteDatamanager:
         result = mycursor.fetchall()
         mydb.close()
         return result
+
+    def select_pragma_info(self, tablename: str):
+
+        return self.select(f"select * from pragma_table_info('{tablename}');")
 
     def query(self, sqlstring, val=None) -> int:
 
